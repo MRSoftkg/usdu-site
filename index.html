@@ -3,106 +3,160 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="USDU — Stable Digital Currency on BNB Chain">
   <title>USDU — Digital Stable Currency</title>
+  <link rel="icon" href="logo.png" />
   <style>
     body {
-      font-family: sans-serif;
       margin: 0;
-      padding: 2rem;
-      background: linear-gradient(to bottom right, #f3f4f6, #fff);
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(to bottom right, #f9fafb, #ffffff);
       color: #333;
+    }
+    .container {
+      max-width: 960px;
+      margin: auto;
+      padding: 2rem;
       text-align: center;
     }
-    header img {
-      width: 100px;
-      height: 100px;
+    img.logo {
+      width: 96px;
+      height: 96px;
+      margin-bottom: 1rem;
     }
     h1 {
-      font-size: 2rem;
-      margin-top: 1rem;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
     }
     p {
       font-size: 1.1rem;
-      margin: 1rem 0 2rem;
+      margin-bottom: 2rem;
     }
-    .buttons a, .buttons button {
-      display: inline-block;
-      margin: 0.5rem;
-      padding: 0.75rem 1.5rem;
-      border: none;
-      background: #4f46e5;
-      color: white;
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .buttons a {
       text-decoration: none;
-      border-radius: 0.5rem;
-      font-weight: bold;
-      cursor: pointer;
+      background-color: #0070f3;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 5px;
+      font-weight: 500;
+    }
+    .buttons a.outline {
+      background: none;
+      border: 1px solid #ccc;
+      color: #333;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+      text-align: left;
+    }
+    .card {
+      background-color: #f1f5f9;
+      padding: 1rem;
+      border-radius: 8px;
     }
     .lang-select {
-      margin-top: 2rem;
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
     }
     .lang-select button {
-      margin: 0.25rem;
       background: none;
       border: none;
-      color: #333;
-      cursor: pointer;
+      color: #0070f3;
       font-size: 0.9rem;
+      cursor: pointer;
     }
-    footer {
-      margin-top: 3rem;
+    .footer {
       font-size: 0.8rem;
-      color: #666;
+      color: #555;
+      margin-top: 3rem;
+    }
+    .exchanges img {
+      height: 32px;
+      margin: 0 10px;
+      vertical-align: middle;
+    }
+    .socials a {
+      margin: 0 10px;
+      color: #0070f3;
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
-  <header>
-    <img src="logo.png" alt="USDU Logo" />
+  <div class="container">
+    <img src="logo.png" alt="USDU logo" class="logo" />
     <h1>USDU — Digital Stable Currency</h1>
     <p>
-      USDU is a decentralized BEP-20 stablecoin designed to mirror the value of 1 USD. <br>
-      Built for stability, speed, and global access.
+      USDU is a decentralized stablecoin on BNB Smart Chain (BEP-20).<br>
+      It is always displayed as <strong>1 USDU = 1 USD</strong> across wallets and explorers.<br>
+      Fast, stable, transparent.
     </p>
-  </header>
 
-  <div class="buttons">
-    <button onclick="addToMetaMask()">Add to MetaMask</button>
-    <a href="https://trustwallet.com/add-token" target="_blank">Add to Trust Wallet</a>
-    <a href="https://bscscan.com/token/0xb7a23876bafa7223d256cab41a2bf109b26a6018" target="_blank">View on BscScan</a>
+    <div class="buttons">
+      <a href="#">➕ Add to MetaMask</a>
+      <a href="#">➕ Add to Trust Wallet</a>
+      <a href="https://bscscan.com/token/0xb7a23876bafa7223d256cab41a2bf109b26a6018" target="_blank" class="outline">🔍 View on BscScan</a>
+    </div>
+
+    <div class="lang-select">
+      <button>English</button>
+      <button>Русский</button>
+      <button>中文</button>
+      <button>Deutsch</button>
+      <button>Español</button>
+      <button>Italiano</button>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Fast & Reliable</h3>
+        <p>Built on BNB Smart Chain (BEP-20), USDU enables low-fee, high-speed transactions for users worldwide.</p>
+      </div>
+      <div class="card">
+        <h3>Stable by Design</h3>
+        <p>Displayed as 1 USDU = 1 USD across wallets like MetaMask, Trust Wallet and Web3 platforms.</p>
+      </div>
+      <div class="card">
+        <h3>Future Listings</h3>
+        <p>USDU is preparing listings on Binance, Bybit, Gate.io, and other major exchanges. Stay tuned.</p>
+      </div>
+      <div class="card">
+        <h3>Community Powered</h3>
+        <p>Transparent roadmap and long-term ecosystem plans for Web3 integration and adoption.</p>
+      </div>
+    </div>
+
+    <div class="exchanges">
+      <h3>Exchanges (coming soon)</h3>
+      <a href="#"><img src="https://cryptologos.cc/logos/binance-coin-bnb-logo.png" alt="Binance" /></a>
+      <a href="#"><img src="https://cryptologos.cc/logos/bybit-bybit-logo.png" alt="Bybit" /></a>
+      <a href="#"><img src="https://cryptologos.cc/logos/huobi-token-ht-logo.png" alt="HTX" /></a>
+      <a href="#"><img src="https://cryptologos.cc/logos/gatechain-token-gt-logo.png" alt="Gate.io" /></a>
+    </div>
+
+    <div class="socials" style="margin-top: 2rem;">
+      <a href="#">Telegram</a>
+      <a href="#">Twitter</a>
+      <a href="#">YouTube</a>
+    </div>
+
+    <div class="footer">
+      Contract Address: 0xb7a23876bafa7223d256cab41a2bf109b26a6018<br />
+      &copy; 2025 USDU. All rights reserved.
+    </div>
   </div>
-
-  <div class="lang-select">
-    <button>English</button>
-    <button>Русский</button>
-    <button>中文</button>
-    <button>Deutsch</button>
-    <button>Español</button>
-    <button>Italiano</button>
-  </div>
-
-  <footer>
-    Contract Address: 0xb7a23876bafa7223d256cab41a2bf109b26a6018
-  </footer>
-
-  <script>
-    async function addToMetaMask() {
-      try {
-        await window.ethereum.request({
-          method: 'wallet_watchAsset',
-          params: {
-            type: 'ERC20',
-            options: {
-              address: '0xb7a23876bafa7223d256cab41a2bf109b26a6018',
-              symbol: 'USDU',
-              decimals: 6,
-              image: location.origin + '/logo.png'
-            }
-          }
-        });
-      } catch (e) {
-        alert('Please install MetaMask!');
-      }
-    }
-  </script>
 </body>
 </html>
