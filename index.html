@@ -32,13 +32,6 @@
       font-size: 1.1rem;
       margin-bottom: 1rem;
     }
-    .buttons {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-      margin-bottom: 2rem;
-    }
     .buttons a {
       text-decoration: none;
       background-color: rgba(0,34,85,1);
@@ -46,11 +39,8 @@
       padding: 0.75rem 1.5rem;
       border-radius: 5px;
       font-weight: 500;
-    }
-    .buttons a.outline {
-      background: none;
-      border: 1px solid #ccc;
-      color: #333;
+      display: inline-block;
+      margin: 0.5rem;
     }
     .grid {
       display: grid;
@@ -69,19 +59,31 @@
       color: #555;
       margin-top: 3rem;
     }
-    .exchanges img {
-      height: 32px;
-      margin: 0 10px;
-      vertical-align: middle;
-      cursor: pointer;
-    }
     .socials a {
       margin: 0 10px;
+      color: white;
+      background: rgba(0,34,85,1);
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      text-decoration: none;
+    }
+    .exchanges h3 {
+      margin-top: 2rem;
+    }
+    .exchanges a {
+      display: inline-block;
       background-color: rgba(0,34,85,1);
       color: white;
-      text-decoration: none;
       padding: 0.5rem 1rem;
-      border-radius: 5px;
+      margin: 0.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    .exchanges img {
+      height: 20px;
+      vertical-align: middle;
+      margin-right: 8px;
     }
     .lang-button {
       position: absolute;
@@ -95,29 +97,30 @@
       border: none;
       padding: 0.5rem;
       cursor: pointer;
-      border-radius: 5px;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      line-height: 1;
     }
     .lang-menu {
       display: none;
       position: absolute;
-      right: 20px;
-      top: 60px;
-      background: #fff;
+      right: 0;
+      background: white;
       border: 1px solid #ccc;
+      padding: 0.5rem;
+      margin-top: 0.5rem;
       border-radius: 5px;
-      z-index: 10;
     }
     .lang-menu button {
       display: block;
-      width: 100%;
-      padding: 0.5rem 1rem;
-      border: none;
       background: none;
+      border: none;
+      padding: 0.25rem 1rem;
+      width: 100%;
       text-align: left;
       cursor: pointer;
-    }
-    .lang-menu button:hover {
-      background: #eee;
+      color: #002255;
     }
   </style>
 </head>
@@ -125,58 +128,63 @@
   <div class="lang-button">
     <button onclick="toggleLangMenu()">🌐</button>
     <div class="lang-menu" id="langMenu">
-      <button onclick="setLang('en')">English</button>
-      <button onclick="setLang('ru')">Русский</button>
-      <button onclick="setLang('zh')">中文</button>
-      <button onclick="setLang('de')">Deutsch</button>
-      <button onclick="setLang('es')">Español</button>
-      <button onclick="setLang('it')">Italiano</button>
+      <button onclick="setLanguage('en')">English</button>
+      <button onclick="setLanguage('ru')">Русский</button>
+      <button onclick="setLanguage('zh')">中文</button>
+      <button onclick="setLanguage('de')">Deutsch</button>
+      <button onclick="setLanguage('es')">Español</button>
+      <button onclick="setLanguage('it')">Italiano</button>
     </div>
   </div>
 
   <div class="container">
     <img src="logo.png" alt="USDU logo" class="logo" />
-    <h1 id="title">USDU — Digital Stable Currency</h1>
-    <p id="desc1">USDU is a decentralized stablecoin on BNB Smart Chain (BEP-20).</p>
-    <p id="desc2">It is always displayed as 1 USDU = 1 USD across wallets and explorers. Fast, stable, transparent.</p>
+    <h1>USDU — Digital Stable Currency</h1>
+    <div id="description">
+      <p>USDU is a decentralized stablecoin on BNB Smart Chain (BEP-20).</p>
+      <p>It is always displayed as 1 USDU = 1 USD across wallets and explorers. Fast, stable, transparent.</p>
+    </div>
 
     <div class="buttons">
-      <a href="#" id="metamaskBtn">Add to MetaMask</a>
-      <a href="#" id="trustBtn">Add to Trust Wallet</a>
-      <a href="https://bscscan.com/token/0xb7a23876bafa7223d256cab41a2bf109b26a6018" target="_blank" class="outline" id="bscBtn">🔍 View on BscScan</a>
+      <a href="#">Add to MetaMask</a>
+      <a href="#">Add to Trust Wallet</a>
+      <a href="https://bscscan.com/token/0xb7a23876bafa7223d256cab41a2bf109b26a6018" target="_blank">🔍 BscScan</a>
     </div>
 
     <div class="grid">
       <div class="card">
-        <h3 id="card1-title">Fast & Reliable</h3>
-        <p id="card1-text">Built on BNB Smart Chain (BEP-20), USDU enables low-fee, high-speed transactions for users worldwide.</p>
+        <h3>Fast & Reliable</h3>
+        <p>Built on BNB Smart Chain (BEP-20), USDU enables low-fee, high-speed transactions for users worldwide.</p>
       </div>
       <div class="card">
-        <h3 id="card2-title">Stable by Design</h3>
-        <p id="card2-text">Displayed as 1 USDU = 1 USD across wallets like MetaMask, Trust Wallet and Web3 platforms.</p>
+        <h3>Stable by Design</h3>
+        <p>Displayed as 1 USDU = 1 USD across wallets like MetaMask, Trust Wallet and Web3 platforms.</p>
       </div>
       <div class="card">
-        <h3 id="card3-title">Future Listings</h3>
-        <p id="card3-text">USDU is preparing listings on Binance, Bybit, Gate.io, and other major exchanges. Stay tuned.</p>
+        <h3>Future Listings</h3>
+        <p>USDU is preparing listings on Binance, Bybit, Gate.io, and other major exchanges. Stay tuned.</p>
       </div>
       <div class="card">
-        <h3 id="card4-title">Community Powered</h3>
-        <p id="card4-text">Transparent roadmap and long-term ecosystem plans for Web3 integration and adoption.</p>
+        <h3>Community Powered</h3>
+        <p>Transparent roadmap and long-term ecosystem plans for Web3 integration and adoption.</p>
       </div>
     </div>
 
     <div class="exchanges">
       <h3>Exchanges (coming soon)</h3>
-      <a href="https://www.binance.com/" target="_blank"><img src="https://cryptologos.cc/logos/binance-coin-bnb-logo.png" alt="Binance" /></a>
-      <a href="https://www.bybit.com/" target="_blank"><img src="https://cryptologos.cc/logos/bybit-bybit-logo.png" alt="Bybit" /></a>
-      <a href="https://www.htx.com/" target="_blank"><img src="https://cryptologos.cc/logos/huobi-token-ht-logo.png" alt="HTX" /></a>
-      <a href="https://www.gate.io/" target="_blank"><img src="https://cryptologos.cc/logos/gatechain-token-gt-logo.png" alt="Gate.io" /></a>
+      <a href="https://www.binance.com/" target="_blank"><img src="https://cryptologos.cc/logos/binance-coin-bnb-logo.png" alt="Binance"> Binance</a>
+      <a href="https://www.bybit.com/" target="_blank"><img src="https://cryptologos.cc/logos/bybit-bybit-logo.png" alt="Bybit"> Bybit</a>
+      <a href="https://www.htx.com/" target="_blank"><img src="https://cryptologos.cc/logos/huobi-token-ht-logo.png" alt="HTX"> HTX</a>
+      <a href="https://www.gate.io/" target="_blank"><img src="https://cryptologos.cc/logos/gatechain-token-gt-logo.png" alt="Gate.io"> Gate.io</a>
+      <a href="https://www.okx.com/" target="_blank"><img src="https://cryptologos.cc/logos/okb-okb-logo.png" alt="OKX"> OKX</a>
+      <a href="https://www.coinbase.com/" target="_blank"><img src="https://cryptologos.cc/logos/coinbase-coinbase-logo.png" alt="Coinbase"> Coinbase</a>
+      <a href="https://www.mexc.com/" target="_blank"><img src="https://cryptologos.cc/logos/mexc-mexc-logo.png" alt="MEXC"> MEXC</a>
     </div>
 
-    <div class="socials" style="margin-top: 2rem;">
+    <div class="socials">
       <a href="https://t.me/USDUcommunity" target="_blank">Telegram</a>
       <a href="https://twitter.com/USDUofficial" target="_blank">Twitter</a>
-      <a href="https://youtube.com/@USDUofficial" target="_blank">YouTube</a>
+      <a href="https://www.youtube.com/@USDUofficial" target="_blank">YouTube</a>
     </div>
 
     <div class="footer">
@@ -186,55 +194,43 @@
   </div>
 
   <script>
-    const langMenu = document.getElementById('langMenu');
-    const toggleLangMenu = () => {
-      langMenu.style.display = langMenu.style.display === 'block' ? 'none' : 'block';
-    };
-    const setLang = (lang) => {
-      const t = {
-        en: {
-          title: "USDU — Digital Stable Currency",
-          desc1: "USDU is a decentralized stablecoin on BNB Smart Chain (BEP-20).",
-          desc2: "It is always displayed as 1 USDU = 1 USD across wallets and explorers. Fast, stable, transparent.",
-          meta: "Add to MetaMask",
-          trust: "Add to Trust Wallet",
-          bsc: "🔍 View on BscScan",
-          card1: ["Fast & Reliable", "Built on BNB Smart Chain (BEP-20), USDU enables low-fee, high-speed transactions for users worldwide."],
-          card2: ["Stable by Design", "Displayed as 1 USDU = 1 USD across wallets like MetaMask, Trust Wallet and Web3 platforms."],
-          card3: ["Future Listings", "USDU is preparing listings on Binance, Bybit, Gate.io, and other major exchanges. Stay tuned."],
-          card4: ["Community Powered", "Transparent roadmap and long-term ecosystem plans for Web3 integration and adoption."]
-        },
-        ru: {
-          title: "USDU — Цифровой Стейблкоин",
-          desc1: "USDU — децентрализованный стейблкоин в сети BNB Smart Chain (BEP-20).",
-          desc2: "Отображается как 1 USDU = 1 USD. Быстро, стабильно, прозрачно.",
-          meta: "Добавить в MetaMask",
-          trust: "Добавить в Trust Wallet",
-          bsc: "🔍 Смотреть на BscScan",
-          card1: ["Быстро и Надежно", "Сеть BNB обеспечивает низкие комиссии и высокую скорость."],
-          card2: ["Стабильность по Дизайну", "Всегда отображается как 1 USDU = 1 USD в Web3-кошельках."],
-          card3: ["Будущие Листинги", "Подготовка к листингам на Binance, Bybit, Gate.io и др."],
-          card4: ["Сила Сообщества", "Прозрачная дорожная карта и развитие экосистемы."]
-        }
-        // можно добавить zh, de, es, it при необходимости
+    function toggleLangMenu() {
+      const menu = document.getElementById("langMenu");
+      menu.style.display = menu.style.display === "block" ? "none" : "block";
+    }
+
+    function setLanguage(lang) {
+      const translations = {
+        en: [
+          "USDU is a decentralized stablecoin on BNB Smart Chain (BEP-20).",
+          "It is always displayed as 1 USDU = 1 USD across wallets and explorers. Fast, stable, transparent."
+        ],
+        ru: [
+          "USDU — децентрализованный стейблкоин в сети BNB Smart Chain (BEP-20).",
+          "Отображается как 1 USDU = 1 USD во всех кошельках и обозревателях. Быстро, стабильно, прозрачно."
+        ],
+        zh: [
+          "USDU 是 BNB 智能链上的去中心化稳定币 (BEP-20)。",
+          "在所有钱包和区块浏览器中始终显示为 1 USDU = 1 USD。快速、稳定、透明。"
+        ],
+        de: [
+          "USDU ist ein dezentraler Stablecoin auf der BNB Smart Chain (BEP-20).",
+          "Wird immer als 1 USDU = 1 USD angezeigt. Schnell, stabil, transparent."
+        ],
+        es: [
+          "USDU es una stablecoin descentralizada en BNB Smart Chain (BEP-20).",
+          "Siempre se muestra como 1 USDU = 1 USD. Rápido, estable, transparente."
+        ],
+        it: [
+          "USDU è una stablecoin decentralizzata su BNB Smart Chain (BEP-20).",
+          "Sempre visualizzato come 1 USDU = 1 USD. Veloce, stabile, trasparente."
+        ]
       };
-      const c = t[lang];
-      document.getElementById("title").textContent = c.title;
-      document.getElementById("desc1").textContent = c.desc1;
-      document.getElementById("desc2").textContent = c.desc2;
-      document.getElementById("metamaskBtn").textContent = c.meta;
-      document.getElementById("trustBtn").textContent = c.trust;
-      document.getElementById("bscBtn").textContent = c.bsc;
-      document.getElementById("card1-title").textContent = c.card1[0];
-      document.getElementById("card1-text").textContent = c.card1[1];
-      document.getElementById("card2-title").textContent = c.card2[0];
-      document.getElementById("card2-text").textContent = c.card2[1];
-      document.getElementById("card3-title").textContent = c.card3[0];
-      document.getElementById("card3-text").textContent = c.card3[1];
-      document.getElementById("card4-title").textContent = c.card4[0];
-      document.getElementById("card4-text").textContent = c.card4[1];
-      langMenu.style.display = "none";
-    };
+      const desc = document.getElementById("description");
+      const [line1, line2] = translations[lang] || translations["en"];
+      desc.innerHTML = `<p>${line1}</p><p>${line2}</p>`;
+      document.getElementById("langMenu").style.display = "none";
+    }
   </script>
 </body>
 </html>
