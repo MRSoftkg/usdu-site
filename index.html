@@ -3,79 +3,253 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>USDU - Stablecoin</title>
+  <meta name="description" content="USDU — Stable Digital Currency on BNB Chain">
+  <title>USDU — Digital Stable Currency</title>
+  <link rel="icon" href="logo.png" />
   <style>
-    body { font-family: Arial, sans-serif; margin:0; padding:0; }
-    header { background:#20232A; color:#fff; padding:10px; display:flex; justify-content:space-between; align-items:center;}
-    .lang-selector { cursor:pointer; position:relative; }
-    .lang-list { display:none; position:absolute; top:100%; right:0; background:#fff; color:#000; border:1px solid #ccc; border-radius:4px; }
-    .lang-list div { padding:8px; cursor:pointer; }
-    .lang-list div:hover { background:#f0f0f0; }
-    main { padding:20px; }
-    .hidden { display:none; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(to bottom right, #f9fafb, #ffffff);
+      color: #333;
+    }
+    .container {
+      max-width: 960px;
+      margin: auto;
+      padding: 2rem;
+      text-align: center;
+    }
+    img.logo {
+      width: 96px;
+      height: 96px;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .buttons a {
+      text-decoration: none;
+      background-color: #0070f3;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 5px;
+      font-weight: 500;
+    }
+    .buttons a.outline {
+      background: none;
+      border: 1px solid #ccc;
+      color: #333;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+      text-align: left;
+    }
+    .card {
+      background-color: #f1f5f9;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+    .footer {
+      font-size: 0.8rem;
+      color: #555;
+      margin-top: 3rem;
+    }
+    .exchanges img {
+      height: 32px;
+      margin: 0 10px;
+      vertical-align: middle;
+    }
+    .socials a {
+      margin: 0 10px;
+      color: #0070f3;
+      text-decoration: none;
+    }
+    .lang-button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+    .lang-button button {
+      font-size: 1.2rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .lang-menu {
+      display: none;
+      position: absolute;
+      right: 20px;
+      top: 60px;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      z-index: 10;
+    }
+    .lang-menu button {
+      display: block;
+      width: 100%;
+      padding: 0.5rem 1rem;
+      border: none;
+      background: none;
+      text-align: left;
+      cursor: pointer;
+    }
+    .lang-menu button:hover {
+      background: #eee;
+    }
   </style>
 </head>
 <body>
-
-<header>
-  <div><strong>USDU</strong></div>
-  <div class="lang-selector">
-    🌐
-    <div class="lang-list" id="langList">
-      <div data-lang="en">English</div>
-      <div data-lang="ru">Русский</div>
-      <div data-lang="zh">中文</div>
-      <div data-lang="de">Deutsch</div>
-      <div data-lang="es">Español</div>
-      <div data-lang="it">Italiano</div>
+  <div class="lang-button">
+    <button onclick="toggleLangMenu()">🌐</button>
+    <div class="lang-menu" id="langMenu">
+      <button onclick="setLang('en')">English</button>
+      <button onclick="setLang('ru')">Русский</button>
+      <button onclick="setLang('zh')">中文</button>
+      <button onclick="setLang('de')">Deutsch</button>
+      <button onclick="setLang('es')">Español</button>
+      <button onclick="setLang('it')">Italiano</button>
     </div>
   </div>
-</header>
 
-<main>
-  <h1 data-i18n="heading">Welcome to USDU</h1>
-  <p data-i18n="intro">USDU is a decentralized stablecoin on BNB Smart Chain.</p>
-</main>
+  <div class="container">
+    <img src="logo.png" alt="USDU logo" class="logo" />
+    <h1 id="title">USDU — Digital Stable Currency</h1>
+    <p id="description">
+      USDU is a decentralized stablecoin on BNB Smart Chain (BEP-20).<br>
+      It is always displayed as <strong>1 USDU = 1 USD</strong> across wallets and explorers.<br>
+      Fast, stable, transparent.
+    </p>
 
-<script>
-  // Переводы
-  const translations = {
-    en: { heading: "Welcome to USDU", intro: "USDU is a decentralized stablecoin on BNB Smart Chain." },
-    ru: { heading: "Добро пожаловать в USDU", intro: "USDU — децентрализованный стейблкоин в сети BNB Smart Chain." },
-    zh: { heading: "欢迎来到 USDU", intro: "USDU 是 BNB 智能链上的去中心化稳定币。" },
-    de: { heading: "Willkommen bei USDU", intro: "USDU ist ein dezentraler Stablecoin auf BNB Smart Chain." },
-    es: { heading: "Bienvenido a USDU", intro: "USDU es una stablecoin descentralizada en BNB Smart Chain." },
-    it: { heading: "Benvenuto su USDU", intro: "USDU è uno stablecoin decentralizzato su BNB Smart Chain." }
-  };
+    <div class="buttons">
+      <a href="#"> Add to MetaMask</a>
+      <a href="#"> Add to Trust Wallet</a>
+      <a href="https://bscscan.com/token/0xb7a23876bafa7223d256cab41a2bf109b26a6018" target="_blank" class="outline">🔍 View on BscScan</a>
+    </div>
 
-  const langSelector = document.querySelector('.lang-selector');
-  const langList = document.getElementById('langList');
+    <div class="grid">
+      <div class="card">
+        <h3 id="card1-title">Fast & Reliable</h3>
+        <p id="card1-text">Built on BNB Smart Chain (BEP-20), USDU enables low-fee, high-speed transactions for users worldwide.</p>
+      </div>
+      <div class="card">
+        <h3 id="card2-title">Stable by Design</h3>
+        <p id="card2-text">Displayed as 1 USDU = 1 USD across wallets like MetaMask, Trust Wallet and Web3 platforms.</p>
+      </div>
+      <div class="card">
+        <h3 id="card3-title">Future Listings</h3>
+        <p id="card3-text">USDU is preparing listings on Binance, Bybit, Gate.io, and other major exchanges. Stay tuned.</p>
+      </div>
+      <div class="card">
+        <h3 id="card4-title">Community Powered</h3>
+        <p id="card4-text">Transparent roadmap and long-term ecosystem plans for Web3 integration and adoption.</p>
+      </div>
+    </div>
 
-  langSelector.addEventListener('click', () => {
-    langList.style.display = (langList.style.display === 'block') ? 'none' : 'block';
-  });
+    <div class="exchanges">
+      <h3>Exchanges (coming soon)</h3>
+      <a href="#"><img src="https://cryptologos.cc/logos/binance-coin-bnb-logo.png" alt="Binance" /></a>
+      <a href="#"><img src="https://cryptologos.cc/logos/bybit-bybit-logo.png" alt="Bybit" /></a>
+      <a href="#"><img src="https://cryptologos.cc/logos/huobi-token-ht-logo.png" alt="HTX" /></a>
+      <a href="#"><img src="https://cryptologos.cc/logos/gatechain-token-gt-logo.png" alt="Gate.io" /></a>
+    </div>
 
-  document.querySelectorAll('#langList div').forEach(el => {
-    el.addEventListener('click', () => {
-      const lang = el.getAttribute('data-lang');
-      applyLang(lang);
-      langList.style.display = 'none';
-      document.documentElement.lang = lang;
-    });
-  });
+    <div class="socials" style="margin-top: 2rem;">
+      <a href="https://t.me/USDUcommunity" target="_blank">Telegram</a>
+      <a href="https://twitter.com/USDUofficial" target="_blank">Twitter</a>
+      <a href="https://youtube.com/@USDUofficial" target="_blank">YouTube</a>
+    </div>
 
-  function applyLang(lang){
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      const key = el.getAttribute('data-i18n');
-      if(translations[lang] && translations[lang][key]) {
-        el.textContent = translations[lang][key];
-      }
-    });
-  }
+    <div class="footer">
+      Contract Address: 0xb7a23876bafa7223d256cab41a2bf109b26a6018<br />
+      &copy; 2025 USDU. All rights reserved.
+    </div>
+  </div>
 
-  // Устанавливаем язык по умолчанию
-  applyLang('en');
-</script>
-
+  <script>
+    const langMenu = document.getElementById('langMenu');
+    const toggleLangMenu = () => {
+      langMenu.style.display = langMenu.style.display === 'block' ? 'none' : 'block';
+    };
+    const setLang = (lang) => {
+      const translations = {
+        en: {
+          title: "USDU — Digital Stable Currency",
+          description: "USDU is a decentralized stablecoin on BNB Smart Chain (BEP-20). It is always displayed as 1 USDU = 1 USD across wallets and explorers. Fast, stable, transparent.",
+          card1: ["Fast & Reliable", "Built on BNB Smart Chain (BEP-20), USDU enables low-fee, high-speed transactions for users worldwide."],
+          card2: ["Stable by Design", "Displayed as 1 USDU = 1 USD across wallets like MetaMask, Trust Wallet and Web3 platforms."],
+          card3: ["Future Listings", "USDU is preparing listings on Binance, Bybit, Gate.io, and other major exchanges. Stay tuned."],
+          card4: ["Community Powered", "Transparent roadmap and long-term ecosystem plans for Web3 integration and adoption."]
+        },
+        ru: {
+          title: "USDU — Цифровой Стейблкоин",
+          description: "USDU — децентрализованный стейблкоин в сети BNB Smart Chain (BEP-20). Отображается как 1 USDU = 1 USD в кошельках. Быстро, стабильно, прозрачно.",
+          card1: ["Быстро и Надежно", "Сеть BNB обеспечивает низкие комиссии и высокую скорость для пользователей по всему миру."],
+          card2: ["Стабильность по Дизайну", "Отображается как 1 USDU = 1 USD в MetaMask, Trust Wallet и Web3-платформах."],
+          card3: ["Будущие Листинги", "Планируются листинги на Binance, Bybit, Gate.io и других популярных биржах."],
+          card4: ["Сила Сообщества", "Прозрачная дорожная карта и экосистема для долгосрочного развития."]
+        },
+        zh: {
+          title: "USDU — 稳定的数字货币",
+          description: "USDU 是部署在 BNB 智能链上的去中心化稳定币。钱包中始终显示 1 USDU = 1 USD。快速、稳定、透明。",
+          card1: ["快速且可靠", "基于 BNB Chain，低手续费、高速度，面向全球用户。"],
+          card2: ["设计即稳定", "在各类钱包中始终显示 1 USDU = 1 USD。"],
+          card3: ["即将上线交易所", "正在准备上线 Binance、Bybit、Gate.io 等主流交易所。"],
+          card4: ["社区驱动", "透明路线图与长期生态计划。"]
+        },
+        de: {
+          title: "USDU — Digitale Stablecoin",
+          description: "USDU ist ein dezentraler Stablecoin auf der BNB Smart Chain. Wird in Wallets immer als 1 USDU = 1 USD angezeigt. Schnell, stabil, transparent.",
+          card1: ["Schnell & Zuverlässig", "Niedrige Gebühren und hohe Geschwindigkeit durch BNB Smart Chain."],
+          card2: ["Stabilität im Design", "Angezeigt als 1 USDU = 1 USD in MetaMask, Trust Wallet usw."],
+          card3: ["Zukünftige Listings", "Bald auf Binance, Bybit, Gate.io und mehr."],
+          card4: ["Community-gesteuert", "Transparente Roadmap & Web3-Integration."]
+        },
+        es: {
+          title: "USDU — Moneda Estable Digital",
+          description: "USDU es una stablecoin descentralizada en BNB Smart Chain. Siempre se muestra como 1 USDU = 1 USD. Rápido, estable, transparente.",
+          card1: ["Rápido y Confiable", "Transacciones rápidas y de bajo costo en todo el mundo."],
+          card2: ["Estabilidad por Diseño", "1 USDU = 1 USD en wallets y plataformas Web3."],
+          card3: ["Listados Futuros", "Pronto en Binance, Bybit, Gate.io y más."],
+          card4: ["Impulsado por la Comunidad", "Hoja de ruta transparente y ecosistema a largo plazo."]
+        },
+        it: {
+          title: "USDU — Stablecoin Digitale",
+          description: "USDU è una stablecoin decentralizzata sulla rete BNB. Sempre visualizzata come 1 USDU = 1 USD. Veloce, stabile, trasparente.",
+          card1: ["Veloce e Affidabile", "Transazioni rapide e a basso costo tramite BNB Smart Chain."],
+          card2: ["Stabile per Progetto", "Visualizzata come 1 USDU = 1 USD nei wallet."],
+          card3: ["Listing Futuri", "Prossimamente su Binance, Bybit, Gate.io, ecc."],
+          card4: ["Guidato dalla Community", "Roadmap trasparente e adozione Web3."]
+        }
+      };
+      const t = translations[lang];
+      document.getElementById("title").textContent = t.title;
+      document.getElementById("description").innerHTML = t.description;
+      document.getElementById("card1-title").textContent = t.card1[0];
+      document.getElementById("card1-text").textContent = t.card1[1];
+      document.getElementById("card2-title").textContent = t.card2[0];
+      document.getElementById("card2-text").textContent = t.card2[1];
+      document.getElementById("card3-title").textContent = t.card3[0];
+      document.getElementById("card3-text").textContent = t.card3[1];
+      document.getElementById("card4-title").textContent = t.card4[0];
+      document.getElementById("card4-text").textContent = t.card4[1];
+      langMenu.style.display = "none";
+    };
+  </script>
 </body>
 </html>
